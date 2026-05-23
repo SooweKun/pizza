@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export function middleware(request: NextRequest) {
   // const isAuth = request.cookies.get('auth')?.value === 'true'; // получаем куку под названием auth и проверяем на значение ( если true )
 
-  const isAuth = true;
+  const isAuth = false;
   const { pathname } = request.nextUrl;
   console.log('---> Middleware running on:', pathname);
 
@@ -13,6 +13,7 @@ export function middleware(request: NextRequest) {
   const isPublicPage = publicPaths.some((path) => pathname.startsWith(path)); // это проверка находится ли юзер на разрешенной странице сейчас или нет
 
   // Логика перенаправления
+
   if (!isAuth && !isPublicPage) {
     // Если пользователь не авторизован и пытается зайти на любую страницу, кроме auth/reg
     return NextResponse.redirect(new URL('/authorization', request.url));
