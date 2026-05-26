@@ -9,16 +9,16 @@ export const Header = () => {
   return (
     <div className='w-full h-[60px] flex justify-between px-[100px] items-center bg-[#e8d8c9]'>
       <div>
-        <Link href='/'>Название</Link>
+        <Link href='/home'>Название</Link>
       </div>
       <div className='flex gap-[20px] items-center'>
-        <Link href='/' className='hover:underline-offset-4 hover:underline cursor-pointer'>
+        <Link href='/home' className='hover:underline-offset-4 hover:underline cursor-pointer'>
           О нас
         </Link>
-        <Link href='/' className='hover:underline-offset-4 hover:underline cursor-pointer'>
+        <Link href='/home' className='hover:underline-offset-4 hover:underline cursor-pointer'>
           Контакты
         </Link>
-        <Link href='/' className='hover:underline-offset-4 hover:underline cursor-pointer'>
+        <Link href='/home' className='hover:underline-offset-4 hover:underline cursor-pointer'>
           Корпоративные заказы
         </Link>
       </div>

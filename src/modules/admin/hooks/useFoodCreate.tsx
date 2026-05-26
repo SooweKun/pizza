@@ -1,3 +1,4 @@
+'use client';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -12,9 +13,11 @@ export const useFoodCreate = () => {
       formData.append('compound', data.compound);
       formData.append('image', data.image[0]); // Берем сам файл
 
-      const { data: response } = await axios.post('/api/food', formData, {
+      const { data: response } = await axios.post('/api/create-food', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+
+      console.log(response, 'ответ от сервера при создании продукта');
 
       return response;
     },

@@ -7,6 +7,7 @@ type BackendResault = {
   name: string;
   compound: string;
   price: number;
+  image: string;
 };
 
 export const useFood = () => {

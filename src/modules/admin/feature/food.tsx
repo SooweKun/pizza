@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useFoodCreate } from '../hooks/useFoodCreate';
 
 type FoodFormType = {
   name: string;
@@ -15,6 +16,7 @@ type FoodFormType = {
 };
 
 export const Food = () => {
+  const { mutate } = useFoodCreate();
   const [cardData, setCardData] = useState({
     name: 'Название',
     price: 0,
@@ -34,6 +36,7 @@ export const Food = () => {
       compound: data.compound,
       category: data.category,
     });
+    mutate(data);
     console.log(cardData, 'данные формы админ панели создания товаров');
   };
 

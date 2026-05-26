@@ -8,15 +8,16 @@ type Props = {
   name: string;
   compound?: string;
   price: number;
+  image: string;
 };
 
-export const DrawerFood: FC<Props> = ({ name, price, compound }) => {
+export const DrawerFood: FC<Props> = ({ name, price, compound, image }) => {
   const [count, setCount] = useState(1);
 
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Card name={name} price={price} />
+        <Card name={name} price={price} image={image} />
       </DrawerTrigger>
       <DrawerContent className='h-[400px]'>
         <DrawerHeader>
