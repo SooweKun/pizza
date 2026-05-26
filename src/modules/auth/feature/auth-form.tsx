@@ -5,6 +5,7 @@ import { InputField } from '@/components/ui/input-field';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod/v4';
+import { useAuth } from '../hooks/useAuth';
 
 type Inputs = {
   desc: string;
@@ -42,6 +43,8 @@ const AuthFormShema = z.object({
 type AuthFormType = z.infer<typeof AuthFormShema>;
 
 export const AuthForm = () => {
+  const { mutate } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -56,7 +59,7 @@ export const AuthForm = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    mutate(data);
   };
 
   return (
@@ -72,7 +75,7 @@ export const AuthForm = () => {
         />
       ))}
       <Button type='submit' className='w-[200px] px-[15px] h-[35px] border border-black cursor-pointer hover:border-2'>
-        Create
+        Sign in
       </Button>
     </form>
   );

@@ -1,3 +1,4 @@
+import { TanstackProvider } from '@/components/provider/tanstack-provider';
 import { cn } from '@/lib/utils';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
@@ -11,7 +12,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={cn('h-full antialiased bg-[#BFACC0]', 'font-mono', jetbrainsMono.variable)}>
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body className='min-h-full flex flex-col'>
+        <TanstackProvider>{children}</TanstackProvider>
+      </body>
     </html>
   );
 }

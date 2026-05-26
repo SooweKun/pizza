@@ -5,6 +5,7 @@ import { InputField } from '@/components/ui/input-field';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod/v4';
+import { useReg } from '../hooks/useReg';
 
 type Inputs = {
   desc: string;
@@ -42,6 +43,8 @@ const RegisterFormShema = z.object({
 type RegisterFormType = z.infer<typeof RegisterFormShema>;
 
 export const RegForm = () => {
+  const { mutate } = useReg();
+
   const {
     register,
     handleSubmit,
@@ -56,7 +59,7 @@ export const RegForm = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    mutate(data);
   };
 
   return (
