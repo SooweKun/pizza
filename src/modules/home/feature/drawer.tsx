@@ -1,5 +1,6 @@
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
 import { Button } from '@base-ui/react/button';
+import Image from 'next/image';
 import { FC, useState } from 'react';
 import { Card } from './card';
 
@@ -9,15 +10,16 @@ type Props = {
   compound?: string;
   price: number;
   image: string;
+  id: string;
 };
 
-export const DrawerFood: FC<Props> = ({ name, price, compound, image }) => {
+export const DrawerFood: FC<Props> = ({ name, price, compound, image, id }) => {
   const [count, setCount] = useState(1);
 
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Card name={name} price={price} image={image} />
+        <Card name={name} price={price} image={image} id={id} />
       </DrawerTrigger>
       <DrawerContent className='h-[400px]'>
         <DrawerHeader>
@@ -26,11 +28,12 @@ export const DrawerFood: FC<Props> = ({ name, price, compound, image }) => {
         </DrawerHeader>
         <div className='mx-auto w-full max-w-sm flex flex-col gap-[20px] items-center'>
           <div className='flex gap-[50px]'>
-            <div className='size-[150px] rounded-full bg-amber-300' />
-            <p className='flex-1'>
-              {compound} пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз
-              пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз пока хз
-            </p>
+            {image ? (
+              <Image src={image} alt='nf' className='size-[150px]' width={150} height={150} />
+            ) : (
+              <div className='size-[150px] rounded-full bg-amber-300' />
+            )}
+            <p className='flex-1'>{compound}</p>
           </div>
           <DrawerFooter className='flex flex-row gap-[100px]'>
             <div className='flex gap-[10px] items-center mr-[30px]'>

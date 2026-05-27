@@ -55,7 +55,7 @@ export const HomeModule = () => {
           <div className='w-full h-[900px] flex flex-wrap gap-[25px]'>
             {filteredData.length > 0 ? (
               filteredData.map(({ id, name, price, compound, image }) => (
-                <DrawerFood key={id} name={name} price={price} compound={compound} image={image} />
+                <DrawerFood key={id} name={name} price={price} compound={compound} image={image} id={id} />
               ))
             ) : (
               <p>В этой категории пока пусто или данные еще грузятся...</p>
